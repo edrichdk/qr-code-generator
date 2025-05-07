@@ -3,7 +3,7 @@ function generateQRCode() {
     const qrCodeDiv = document.getElementById('qrCode');
 
     if (fileInput.files.length === 0) {
-        alert("Please select an image file.");
+        alert("Please select an image file to generate a QR code.");
         return;
     }
 
@@ -12,11 +12,16 @@ function generateQRCode() {
 
     reader.onload = function(e) {
         const imgData = e.target.result;
+        
+        // Clear the previous QR code if any
+        qrCodeDiv.innerHTML = "";
+
+        // Generate a new QR Code
         QRCode.toCanvas(imgData, function(error, canvas) {
             if (error) {
-                console.error(error);
+                alert("Error generating QR code. Please try again.");
             } else {
-                qrCodeDiv.innerHTML = "";
+                qrCodeDiv.style.display = 'block';  // Make QR code visible
                 qrCodeDiv.appendChild(canvas);
             }
         });
