@@ -12,9 +12,6 @@ function generateQRCode() {
 
     reader.onload = function(e) {
         const imgData = e.target.result;
-        
-        // Debugging: Check the imgData to ensure it’s a valid base64 string.
-        console.log('Image Data: ', imgData);
 
         // Clear the previous QR code if any
         qrCodeDiv.innerHTML = "";
@@ -22,18 +19,13 @@ function generateQRCode() {
         // Generate QR code from image base64
         QRCode.toCanvas(imgData, function(error, canvas) {
             if (error) {
-                // Log the error to the console for debugging
-                console.error("Error generating QR code: ", error);
                 alert("Error generating QR code. Please try again.");
+                console.error(error);
             } else {
-                qrCodeDiv.style.display = 'block';  // Make QR code visible
+                qrCodeDiv.style.display = 'block';
                 qrCodeDiv.appendChild(canvas);
             }
         });
-    };
-
-    reader.onerror = function() {
-        console.error("Error reading the file");
     };
 
     reader.readAsDataURL(file);
