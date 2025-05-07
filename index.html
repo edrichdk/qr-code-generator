@@ -3,31 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QRCode library -->
+    <meta name="description" content="Free online tool to generate QR codes with custom images">
+    <title>Image to QR Generator</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>QR Code Generator</h1>
-        <p>Generate your QR code by uploading an image</p>
-    </header>
-
     <div class="container">
-        <div class="upload-section">
-            <input type="file" id="imageInput" />
-            <button onclick="generateQRCode()">Generate QR Code</button>
+        <h1>Image to QR Code Generator</h1>
+        <div class="input-group">
+            <input type="text" id="qr-text" placeholder="Enter text or URL" required>
+            <input type="file" id="image-input" accept="image/*">
         </div>
-        
-        <div id="qrCode" class="qr-code-output">
-            <!-- The generated QR code will appear here -->
-        </div>
+        <button id="generate-btn">Generate QR Code</button>
+        <div id="qrcode"></div>
+        <button id="download-btn">Download QR Code</button>
     </div>
-
-    <footer>
-        <p>Created with ❤️ by your QR Code Generator</p>
-    </footer>
-
-    <script src="app.js"></script> <!-- Link to the JS file -->
+    <script src="scripts/main.js"></script>
 </body>
 </html>
